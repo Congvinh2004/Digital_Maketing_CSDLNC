@@ -22,6 +22,7 @@
     - macOS 10.15 Catalina hoặc mới hơn
     - Các bản phân phối Linux phổ biến (Ubuntu 20.04+, CentOS 8+, v.v.)
   - **Các phần mềm hoặc thư viện cần thiết:**
+    - SQL Server Management Studio (SSMS)
     - Visual Studio Code (Trình biên dịch code)
     - NVM (để quản lý các phiên bản của Node.js)
     - Node.js
@@ -30,6 +31,9 @@
 ## **3. Cài đặt các công cụ và thư viện cần thiết**
 
 - **Công cụ:**
+
+  - **Cách cài đặt SSMS (SQL Server Management Studio)
+    - Dowload bản chính thức từ trang chủ của Microsoft `https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16`.
   - **Cách cài đặt NVM (phiên bản 1.1.12)**:
     - Xóa toàn bộ phiên bản NodeJs đã cài trên máy.
     - Lưu ý: cần note lại tên phiên bản đã cài trước đó để cài đặt lại nếu cần thiết để chạy các dự án khác.
