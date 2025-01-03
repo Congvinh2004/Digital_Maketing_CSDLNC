@@ -21,7 +21,7 @@
     - Windows 10 hoặc mới hơn
     - macOS 10.15 Catalina hoặc mới hơn
     - Các bản phân phối Linux phổ biến (Ubuntu 20.04+, CentOS 8+, v.v.)
-  - Các phần mềm hoặc thư viện cần thiết:
+  - **Các phần mềm hoặc thư viện cần thiết:**
     - Visual Studio Code (Trình biên dịch code)
     - NVM (để quản lý các phiên bản của Node.js)
     - Node.js
