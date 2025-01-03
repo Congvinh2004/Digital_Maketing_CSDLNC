@@ -22,10 +22,11 @@
     - macOS 10.15 Catalina hoặc mới hơn
     - Các bản phân phối Linux phổ biến (Ubuntu 20.04+, CentOS 8+, v.v.)
   - Các phần mềm hoặc thư viện cần thiết:
+    - Visual Studio Code (Trình biên dịch code)
     - NVM (để quản lý các phiên bản của Node.js)
     - Node.js
     - npm (đi kèm với Node.js)
-
+    - Git (Là một hệ thống quản lý mã nguồn phân tán)
 ## **3. Cài đặt các công cụ và thư viện cần thiết**
 
 - **Công cụ:**
@@ -60,62 +61,87 @@
       nvm install 20.9.0
 
     - Chờ cho tới khi thông báo đã cài đặt thành công
-  
-- **Thư viện:**
-  - Nếu sử dụng package manager (npm, pip, Composer), hướng dẫn chạy lệnh:
-    ```bash
-    npm install
-    ```
-    hoặc
-    ```bash
-    composer install
-    ```
-## **4. Tải xuống mã nguồn**
-- Đường dẫn tới mã nguồn (GitHub, GitLab, link tải về).
-- Hướng dẫn clone repository nếu dùng Git:
+    - Kiểm tra xem đã cài thành công hay chưa, nhập lệnh sau và nhấn Enter:
+      ```bash
+      node -v
+    - Kết quả: Lệnh trên sẽ hiển thị phiên bản Node.js đang được cài đặt, ví dụ:
+      ```bash
+      v20.9.0
+- **Cách cài đặt Git**:
+- Kiểm tra xem máy tính đã được cài Git hay chưa:
   ```bash
-  git clone <link repository>
+  git --version
+Nếu chưa cài, bạn có thể tải Git từ git-scm.com và cài đặt.
 
 
+## **4. Tải xuống mã nguồn**
+**a. Chuẩn bị**:
+- Đảm bảo bạn đã cài đặt Git trên máy tính. Kiểm tra bằng lệnh:
+  ```bash
+  git --version
+- Nếu chưa cài, bạn có thể tải Git theo bước 3.
+
+**b. Clone Project**:
+
+1. **Mở Terminal hoặc Command Prompt**.
+2. Điều hướng đến thư mục mà bạn muốn chứa project (nếu cần):
+   ```bash
+   cd đường_dẫn_thư_mục
+   ```
+   Hoặc tạo 1 thư mục chứa project, ấn chuột phải vào thư mục chọn lệnh "Git Bash Here"
+3. Chạy lệnh clone:
+   ```bash
+   git clone https://github.com/Congvinh2004/Digital_Maketing_CSDLNC
+   ```
+4. Clone xong kiểm tra
+- Sau khi clone xong, bạn sẽ có một thư mục với tên của repository chứa toàn bộ project.
 
 ## **5. Cấu hình dự án**
 
-- Cách thiết lập tệp cấu hình (ví dụ: `.env`, `config.json`):
-  - Liệt kê các thông số cần chỉnh sửa: database, API key, cổng server, v.v.
-  - Ví dụ:
-    ```env
-    DB_HOST=localhost
-    DB_PORT=3306
-    DB_USER=root
-    DB_PASSWORD=password
-    ```
-
+**a. import database vào SQL server**:
+  - mở SSMS, connect server, sau đó tiến hành mở và chạy file script `shop_online.sql` nằm trong thư mục chứa project.
+    
+**b. Cách thiết lập tệp cấu hình**
+  - **Các thông số cần chỉnh sửa**: 
+      1. **Server name**:
+         - tìm đến file `connectDB.js` trong thư mục `config`, tại biến `configRoot` thay tên server theo cú pháp:
+           ```bash
+           Tên_máy_chủ\\Instance_name
+         - Ví dụ:
+           ```bash
+           DESKTOP-UL14UDV\\ROOT_SERVER
+           
+      2. **Tài khoản sa SQL server**:
+         - Thay đổi `user` và `password` trong biến `configRoot` bằng tài khoản sa của server cần kết nối.
+         - Ví dụ:
+          ```bash
+          user: 'user_name',
+          password: '_password',
+      3. **Database name**
+         - Thay đổi tên Database tương ứng trong server:
+         - Ví dụ:
+           ```bash
+           database: 'database_name'
 ## **6. Chạy dự án**
-
-- Hướng dẫn khởi động dự án:
-  - Nếu dùng script:
+- Chạy lệnh `npm install` để cài đặt các gói package của dự án.
+- Sau khi cài đặt xong, sẽ thấy thư mục `node_modules`. Trường hợp chưa thấy, cần kiểm tra và cài đặt lại.
+- Hướng dẫn khởi động dự án, nhập lệnh:
     ```bash
     npm start
     ```
-  - Nếu dùng Docker:
-    ```bash
-    docker-compose up
-    ```
-
 ## **7. Kiểm tra và xác minh**
 
 - Cách kiểm tra xem dự án đã chạy thành công chưa:
-  - Truy cập URL (ví dụ: `http://localhost:3000`).
-  - Hướng dẫn chạy test (nếu có):
+  - Xem log ở terminal, ví dụ:
     ```bash
-    npm test
-    ```
+    Successfully connected to SQL Server.
+    Server is listening on port: 8080.
+  là đã chạy thành công.
 
 ## **8. Các vấn đề thường gặp**
-
 - Danh sách các lỗi phổ biến và cách khắc phục:
   - **Lỗi:** Không thể kết nối tới database.
-    - **Cách xử lý:** Kiểm tra thông tin cấu hình trong tệp `.env`.
+    - **Cách xử lý:** Kiểm tra thông tin cấu hình trong thư mục `config` -> `connectDB.js`.
   - **Lỗi:** Thư viện không tải được.
     - **Cách xử lý:** Chạy lại lệnh cài đặt:
       ```bash
@@ -124,10 +150,7 @@
 
 ## **9. Tài liệu tham khảo**
 
-- Link tới tài liệu chi tiết hơn (nếu có).
-- Đường dẫn tới kênh hỗ trợ (email, forum, GitHub Issues).
+- Tài liệu hướng dẫn sử dụng NVM: `https://github.com/coreybutler/nvm-windows#readme`
 
 ## **10. Liên hệ hỗ trợ**
-
-- Email hoặc số liên lạc của đội hỗ trợ.
-- Các kênh hỗ trợ khác như Slack, Discord, hoặc nhóm Facebook.
+- Email: 4801104148@student.hcmue.edu.vn
